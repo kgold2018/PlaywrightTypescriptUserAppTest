@@ -6,8 +6,9 @@ on:
     branches: [ main ]
 
 jobs:
-  name: 'Run Tests'
+
   test:
+  name: 'Run Tests'
     timeout-minutes: 60
     runs-on: ubuntu-latest
 
