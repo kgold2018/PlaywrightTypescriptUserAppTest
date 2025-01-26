@@ -1,4 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
+import * as os from "node:os";
 
 /**
  * Read environment variables from file.
@@ -37,8 +38,45 @@ export default defineConfig({
         ['html', { outputFolder: 'reports/html-report/', open: 'never' }],
         ['junit', { outputFile: 'reports/junit-report/report.xml' }],
         ['@estruyf/github-actions-reporter'],
-        ['monocart-reporter', { name: "Monocart Report", outputFile: 'reports/monocart-report/index.html' }]
-      ],
+        ['monocart-reporter', { name: "Monocart Report", outputFile: 'reports/monocart-report/index.html' }],
+        [
+          "allure-playwright",
+          {
+            resultsDir: "reports/allure-report",
+            detail: true,
+            suiteTitle: true,
+            // links: {
+            //   issue: {
+            //     nameTemplate: "Issue #%s",
+            //     urlTemplate: "https://issues.example.com/%s",
+            //   },
+            //   tms: {
+            //     nameTemplate: "TMS #%s",
+            //     urlTemplate: "https://tms.example.com/%s",
+            //   },
+            //   jira: {
+            //     urlTemplate: (v) => `https://jira.example.com/browse/${v}`,
+            //   },
+            // },
+            categories: [
+              {
+                name: "Reports",
+                messageRegex: "bar",
+                traceRegex: "baz",
+               // matchedStatuses: [Status.FAILED, Status.BROKEN],
+              },
+            ],
+            environmentInfo: {
+              os_platform: os.platform(),
+              os_release: os.release(),
+              os_version: os.version(),
+              node_version: process.version,
+              process_platform: process.platform,
+            },
+            storeTrends: true,
+          },
+        ],
+   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
@@ -46,9 +84,12 @@ export default defineConfig({
 
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    headless: true,
+    trace: 'retain-on-failure',
+    video: 'retain-on-failure',
+    screenshot: 'only-on-failure',
+    ignoreHTTPSErrors: true,
   },
-
   /* Configure projects for major browsers */
   projects: [
     {
