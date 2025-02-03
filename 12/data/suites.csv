@@ -1,0 +1,5 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Mon Feb 03 17:57:12 GMT 2025","Mon Feb 03 17:57:13 GMT 2025","522","chromium","navigationUI.spec.ts","Navigation tabs are available","","","TC-NavBar-1: Verify Add Tab Load Correctly And Available",""
+"passed","Mon Feb 03 17:57:13 GMT 2025","Mon Feb 03 17:57:13 GMT 2025","414","chromium","navigationUI.spec.ts","Navigation tabs are available","","","TC-NavBar-1: Verify Search Tab Load Correctly And Available",""
+"passed","Mon Feb 03 17:57:13 GMT 2025","Mon Feb 03 17:57:15 GMT 2025","1934","chromium","search.func.spec.ts","Should Search Users By Search Criteria","","","Search User With Unique First Name",""
+"passed","Mon Feb 03 17:57:15 GMT 2025","Mon Feb 03 17:57:15 GMT 2025","127","chromium","template.spec.ts","Test Suite Name","","","Unique Test Name",""
