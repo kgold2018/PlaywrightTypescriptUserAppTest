@@ -1,8 +1,6 @@
 import {defineConfig, devices} from '@playwright/test';
 import * as os from "node:os";
-// @ts-ignore
 import dotenv from 'dotenv';
-// @ts-ignore
 import path from 'path';
 
 dotenv.config({path: path.resolve(__dirname, '.env')});
@@ -19,7 +17,7 @@ export default defineConfig({
     fullyParallel: false,
     forbidOnly: !!process.env.CI,
     retries: process.env.CI ? 2 : 0,
-    workers: process.env.CI ? 1 : undefined,
+    workers: process.env.CI ? 1 : 1,
 
     reporter: [
         ['list'],
@@ -74,7 +72,7 @@ export default defineConfig({
             timeout: 10 * 1000,
             use: {
                 ...devices['Desktop Chrome'],
-                headless: !!process.env.CI,
+                // headless: !!process.env.CI,
             },
             dependencies: ['Setup'],
         },
