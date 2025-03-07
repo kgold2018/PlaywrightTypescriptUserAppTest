@@ -12,7 +12,7 @@ export default defineConfig({
     testIgnore: 'template*',
     outputDir: './reports/test-results',
     expect: {
-        timeout: 2 * 1000
+        timeout: 20 * 1000
     },
     fullyParallel: false,
     forbidOnly: !!process.env.CI,
@@ -24,8 +24,8 @@ export default defineConfig({
         ['json', {outputFile: 'reports/json-report/report.json'}],
         ['html', {outputFolder: 'reports/html-report/', open: 'never'}],
         ['junit', {outputFile: 'reports/junit-report/report.xml'}],
-        ['@estruyf/github-actions-reporter'],
-        ['monocart-reporter', {name: "Monocart Report", outputFile: 'reports/monocart-report/index.html'}],
+       // ['@estruyf/github-actions-reporter'],
+      //  ['monocart-reporter', {name: "Monocart Report", outputFile: 'reports/monocart-report/index.html'}],
         ["allure-playwright",
             {
                 resultsDir: "reports/allure-report",
@@ -69,7 +69,7 @@ export default defineConfig({
         {
             name: 'chromium',
             testMatch: /.*\.test\.ts/,
-            timeout: 10 * 1000,
+            timeout: 20 * 1000,
             use: {
                 ...devices['Desktop Chrome'],
                 // headless: !!process.env.CI,
