@@ -1,4 +1,4 @@
-import {test as base} from "@playwright/test";
+import {test as base} from "@base/base.page";
 import * as preconditions from "@preconditions/preconditions";
 import * as usersData from "@data/users.data";
 import {step, owner, link} from "allure-js-commons";
